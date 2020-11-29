@@ -252,6 +252,18 @@
 <script src="assets/bundles/mainscripts.bundle.js"></script>
 <script src="assets/js/energy.js"></script>
 
+
+<script>
+    $.ajax({
+        url: 'http://lsd2020.igrogood.ru/api/get_energy_consumption.php',
+        method: 'GET',
+        data: 'startDate=2020.01.01&endDate=2020.02.29&region=altai',
+        success: function(response) {
+            console.log(response);
+        }
+    });
+</script>
+
 </body>
 </html>
 
