@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/vendor/animate-css/vivify.min.css">
 <link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
 <link rel="stylesheet" href="assets/vendor/c3/c3.min.css"/>
 
 <!-- MAIN CSS -->
@@ -168,6 +168,42 @@
                     </div>            
                 </div>
             </div>
+            <div class="card">
+                <div class="header">
+                    <h2>Фильтрация</h2>
+                </div>
+                <div class="body pt-4 pb-2">
+                    <form action="#" id="dates">
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-sm-12">
+                                <div class="input-group mb-3">
+                                    <input data-provide="datepicker" data-date-autoclose="true" placeholder="From Date" class="form-control" value="2020.10.01" name="startDate" data-date-format="yyyy.mm.dd">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-12">                                  
+                                <div class="input-group mb-3">
+                                    <input data-provide="datepicker" data-date-autoclose="true" placeholder="To Date" class="form-control" value="2020.10.31" name="endDate" data-date-format="yyyy.mm.dd">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <!-- <label>Регион</label> -->
+                                <div class="multiselect_div mb-3">
+                                    <select id="single-selection" name="region" class="multiselect multiselect-custom">
+                                        <option value="altai">Алтайский край</option>
+                                        <option value="kamchatka">Камчатский край</option>
+                                        <option value="mos">Москва</option>
+                                        <option value="eao">Еврейская автономная область</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <button class="btn btn-info btn-block mb-3" type="submit">Выбрать</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
             <div class="row row-cards">
                 <div class="col-xl-4 col-lg-5 col-md-12">
                     <div class="card">
@@ -208,10 +244,14 @@
 <!-- Javascript -->
 <script src="assets/bundles/libscripts.bundle.js"></script>    
 <script src="assets/bundles/vendorscripts.bundle.js"></script>
+<script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="assets/vendor/multi-select/js/jquery.multi-select.js"></script>
+<script src="assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
 
 <script src="assets/bundles/c3.bundle.js"></script>
 <script src="assets/bundles/mainscripts.bundle.js"></script>
-<script src="assets/js/pages/charts/c3.js"></script>
+<script src="assets/js/energy.js"></script>
+
 </body>
 </html>
 
