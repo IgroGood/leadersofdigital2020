@@ -11,6 +11,7 @@ let chartColors = {
     // 'data3': '#c8d9f1',
     // 'data4': '#7ea5dd',
 };
+
 $(function() {
     $('#single-selection').multiselect({
         maxHeight: 300
@@ -64,32 +65,59 @@ $(function() {
 function initFormDates() {
     $('form#dates').on('submit', function(e) {
         e.preventDefault();
-        let baseUrl = 'http://lsd2020.igrogood.ru:81',
+        let baseUrl = 'http://lsd2020.igrogood.ru',
+        // let baseUrl = 'http://lsd2020.igrogood.ru',
             formData = $(this).serialize();
         console.log(formData);
 
         // request url:
-        // /get_weight_of_indicators?startDate=2020.01.01&endDate=2020.10.31&region=id
+        // http://lsd2020.igrogood.ru:81/get_weight_of_indicators?startDate=2020.01.01&endDate=2020.2.31&region=altai
+        // http://lsd2020.igrogood.ru/api/get_energy_consumption?startDate=2020.01.01&endDate=2020.02.29&region=altai
         $.ajax({
-            url: baseUrl + '/get_weight_of_indicators',
+            url: baseUrl + '/api/get_weight_of_indicators.php',
             method: 'GET',
             data: formData,
             success: function(response) {
                 console.log(response);
                 // JSON.parse();
-                renderWeights(response);
+                // renderWeights(response);
             }
         });
 
         // request url:
-        // /get_energy_consumption?startDate=2020.01.01&endDate=2020.10.31&region=id
+        // http://lsd2020.igrogood.ru:81/get_energy_consumption?startDate=2020.01.01&endDate=2020.2.31&region=altai
+        // http://lsd2020.igrogood.ru/api/get_energy_consumption?startDate=2020.01.01&endDate=2020.2.31&region=altai
         $.ajax({
-            url: baseUrl + '/get_energy_consumption',
+            url: baseUrl + '/api/get_energy_consumption.php',
             method: 'GET',
             data: formData,
             success: function(response) {
-                console.log(response);
-                renderConsumption(response);
+                console.log(JSON.parse(response));
+                
+                let data1 = response.predict,
+                data2 = response.fact;
+                
+                // setTimeout(function() { console.log(data1) }, 1000);
+                console.log(data1);
+                data1[0] = 'data1',
+                data2[0] = 'data2';
+
+                renderConsumption({
+                    columns: {
+                        data: [
+                            data1,
+                            data2
+                            // response.predict,
+
+                        ],
+                        // names: ['Янв', 'Фев', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт']
+                    },
+                    names: {
+                        'data1': 'Планируемое потребление',
+                        'data2': 'Фактическое потребление'
+                    }
+                });
+                // renderConsumption(response);
             }
         });
     });
