@@ -17,7 +17,6 @@ $(function() {
     });
 
     initFormDates();
-    
     renderWeights({
         columns: {
             data: [ // weights of indicators
@@ -77,6 +76,7 @@ function initFormDates() {
             data: formData,
             success: function(response) {
                 console.log(response);
+                // JSON.parse();
                 renderWeights(response);
             }
         });
